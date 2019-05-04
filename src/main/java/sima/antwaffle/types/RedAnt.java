@@ -15,13 +15,31 @@ public class RedAnt extends Ant {
 
     public static RedAnt parse(String s) {
         Matcher m = PATTERN.matcher(s);
+        long id = -1;
+        double x = Double.NaN;
+        double y = Double.NaN;
+        int cap = -1;
         if (m.matches()) {
             for (int i = 1; i <= m.groupCount(); i++) {
-                System.out.println(m.group(i));
+                String g = m.group(i);
+                switch (i) {
+                    case 1:
+                        id = Long.parseUnsignedLong(g);
+                        break;
+                    case 2:
+                        x = Double.parseDouble(g);
+                        break;
+                    case 3:
+                        y = Double.parseDouble(g);
+                        break;
+                    case 4:
+                        cap = Integer.parseUnsignedInt(g);
+                        break;
+                }
             }
         } else {
             throw new RuntimeException("Could not parse string " + s + "as red ant!");
         }
-        return null;
+        return new RedAnt(id, x, y, cap);
     }
 }

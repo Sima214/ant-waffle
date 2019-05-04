@@ -1,5 +1,6 @@
 package sima.antwaffle;
 
+import sima.antwaffle.func_a.KruskalUnionFind;
 import sima.antwaffle.types.Ant;
 import sima.antwaffle.types.BlackAnt;
 import sima.antwaffle.types.RedAnt;
@@ -7,6 +8,7 @@ import sima.antwaffle.types.RedAnt;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -51,6 +53,7 @@ public class Entry {
             return;
         }
         // Function A
+        KruskalUnionFind.calc(Collections.unmodifiableList(dataset));
         // Function B
         // Function C
     }

@@ -15,13 +15,36 @@ public class BlackAnt extends Ant {
 
     public static BlackAnt parse(String s) {
         Matcher m = PATTERN.matcher(s);
+        long id = -1;
+        double x = Double.NaN;
+        double y = Double.NaN;
+        int[] types = new int[]{-1, -1, -1, -1, -1};
         if (m.matches()) {
             for (int i = 1; i <= m.groupCount(); i++) {
-                System.out.println(m.group(i));
+                String g = m.group(i);
+                switch (i) {
+                    case 1:
+                        id = Long.parseUnsignedLong(g);
+                        break;
+                    case 2:
+                        x = Double.parseDouble(g);
+                        break;
+                    case 3:
+                        y = Double.parseDouble(g);
+                        break;
+                        // Case statement with range values.
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                        int type_index = i - 4;
+                        types[type_index] = Integer.parseUnsignedInt(g);
+                }
             }
         } else {
             throw new RuntimeException("Could not parse string " + s + "as black ant!");
         }
-        return null;
+        return new BlackAnt(id, x, y, types);
     }
 }
