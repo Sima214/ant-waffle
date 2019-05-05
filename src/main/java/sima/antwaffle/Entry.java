@@ -1,16 +1,18 @@
 package sima.antwaffle;
 
-import sima.antwaffle.func_a.KruskalUnionFind;
-import sima.antwaffle.types.Ant;
-import sima.antwaffle.types.BlackAnt;
-import sima.antwaffle.types.RedAnt;
-
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import sima.antwaffle.func_a.KruskalUnionFind;
+import sima.antwaffle.func_a.SpanningTree;
+import sima.antwaffle.types.Ant;
+import sima.antwaffle.types.BlackAnt;
+import sima.antwaffle.types.RedAnt;
 
 /**
  * This is where the program enters execution.
@@ -53,7 +55,12 @@ public class Entry {
             return;
         }
         // Function A
-        KruskalUnionFind.calc(Collections.unmodifiableList(dataset));
+        SpanningTree tree = KruskalUnionFind.calc(Collections.unmodifiableList(dataset));
+        try (PrintWriter w = new PrintWriter(new File(outa))) {
+            tree.dump(w);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         // Function B
         // Function C
     }

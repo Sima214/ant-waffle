@@ -4,18 +4,20 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class BlackAnt extends Ant {
-    private static final Pattern PATTERN = Pattern.compile("^(\\d+)\\s+([+-]?\\d*\\.?\\d*)\\s+([+-]?\\d*\\.?\\d*)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s*");
+
+    private static final Pattern PATTERN = Pattern.compile(
+        "^(\\d+)\\s+([+-]?\\d*\\.?\\d*)\\s+([+-]?\\d*\\.?\\d*)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s*");
 
     public final int[] types;
 
-    protected BlackAnt(long id, double x, double y, int[] types) {
-        super(id * 2 + 1, x, y);
+    protected BlackAnt(int id, double x, double y, int[] types) {
+        super(id, x, y);
         this.types = types;
     }
 
     public static BlackAnt parse(String s) {
         Matcher m = PATTERN.matcher(s);
-        long id = -1;
+        int id = -1;
         double x = Double.NaN;
         double y = Double.NaN;
         int[] types = new int[]{-1, -1, -1, -1, -1};
@@ -24,7 +26,7 @@ public class BlackAnt extends Ant {
                 String g = m.group(i);
                 switch (i) {
                     case 1:
-                        id = Long.parseUnsignedLong(g);
+                        id = Integer.parseUnsignedInt(g);
                         break;
                     case 2:
                         x = Double.parseDouble(g);
@@ -32,7 +34,7 @@ public class BlackAnt extends Ant {
                     case 3:
                         y = Double.parseDouble(g);
                         break;
-                        // Case statement with range values.
+                    // Case statement with range values.
                     case 4:
                     case 5:
                     case 6:
@@ -45,6 +47,6 @@ public class BlackAnt extends Ant {
         } else {
             throw new RuntimeException("Could not parse string " + s + "as black ant!");
         }
-        return new BlackAnt(id, x, y, types);
+        return new BlackAnt(id - 1, x, y, types);
     }
 }

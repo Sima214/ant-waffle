@@ -4,18 +4,20 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RedAnt extends Ant {
-    private static final Pattern PATTERN = Pattern.compile("^(\\d+)\\s+([+-]?\\d*\\.?\\d*)\\s+([+-]?\\d*\\.?\\d*)\\s+(\\d+)\\s*");
+
+    private static final Pattern PATTERN = Pattern
+        .compile("^(\\d+)\\s+([+-]?\\d*\\.?\\d*)\\s+([+-]?\\d*\\.?\\d*)\\s+(\\d+)\\s*");
 
     public final int capacity;
 
-    protected RedAnt(long id, double x, double y, int capacity) {
-        super(id * 2, x, y);
+    protected RedAnt(int id, double x, double y, int capacity) {
+        super(id, x, y);
         this.capacity = capacity;
     }
 
     public static RedAnt parse(String s) {
         Matcher m = PATTERN.matcher(s);
-        long id = -1;
+        int id = -1;
         double x = Double.NaN;
         double y = Double.NaN;
         int cap = -1;
@@ -24,7 +26,7 @@ public class RedAnt extends Ant {
                 String g = m.group(i);
                 switch (i) {
                     case 1:
-                        id = Long.parseUnsignedLong(g);
+                        id = Integer.parseUnsignedInt(g);
                         break;
                     case 2:
                         x = Double.parseDouble(g);
@@ -40,6 +42,6 @@ public class RedAnt extends Ant {
         } else {
             throw new RuntimeException("Could not parse string " + s + "as red ant!");
         }
-        return new RedAnt(id, x, y, cap);
+        return new RedAnt(id - 1, x, y, cap);
     }
 }

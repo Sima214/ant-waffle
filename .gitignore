@@ -28,3 +28,6 @@ build
 
 # misc project files.
 .idea
+min_span.txt
+pairings.txt
+bin_fill.txt
