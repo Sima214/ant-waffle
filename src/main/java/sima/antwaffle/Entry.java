@@ -1,7 +1,6 @@
 package sima.antwaffle;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -10,6 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 import sima.antwaffle.func_a.KruskalUnionFind;
 import sima.antwaffle.func_a.SpanningTree;
+import sima.antwaffle.func_c.FillBin;
 import sima.antwaffle.types.Ant;
 import sima.antwaffle.types.BlackAnt;
 import sima.antwaffle.types.RedAnt;
@@ -63,5 +63,20 @@ public class Entry {
         }
         // Function B
         // Function C
+        try (PrintWriter w = new PrintWriter(new File(outc))) {
+            for (int i = 0; i < dataset.size() / 2; i++) {
+                // Take each set of ants.
+                RedAnt r = (RedAnt) dataset.get(i * 2);
+                BlackAnt b = (BlackAnt) dataset.get(i * 2 + 1);
+                int[] seed_count = new int[b.types.length];
+                if (FillBin.try_fill_bin(r, b, seed_count)) {
+                    // Set found!
+                    w.printf("%d\t%d\t%d\t%d\t%d\t%d\t%d\n", r.id, b.id, seed_count[0],
+                        seed_count[1], seed_count[2], seed_count[3], seed_count[4]);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
