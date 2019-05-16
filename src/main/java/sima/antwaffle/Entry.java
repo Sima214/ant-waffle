@@ -71,7 +71,7 @@ public class Entry {
                 int[] seed_count = new int[b.types.length];
                 if (FillBin.try_fill_bin(r, b, seed_count)) {
                     // Set found!
-                    w.printf("%d\t%d\t%d\t%d\t%d\t%d\t%d\n", r.id, b.id, seed_count[0],
+                    w.printf("%d\t%d\t%d\t%d\t%d\t%d\t%d\n", r.id + 1, b.id + 1, seed_count[0],
                         seed_count[1], seed_count[2], seed_count[3], seed_count[4]);
                 }
             }
