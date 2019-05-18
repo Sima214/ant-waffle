@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 import sima.antwaffle.func_a.KruskalUnionFind;
 import sima.antwaffle.func_a.SpanningTree;
+import sima.antwaffle.func_b.GaleShapley;
 import sima.antwaffle.func_c.FillBin;
 import sima.antwaffle.types.Ant;
 import sima.antwaffle.types.BlackAnt;
@@ -62,6 +63,14 @@ public class Entry {
             e.printStackTrace();
         }
         // Function B
+        GaleShapley gs = new GaleShapley();
+        gs.prepare(Collections.unmodifiableList(dataset));
+        gs.calc();
+        try (PrintWriter w = new PrintWriter(new File(outb))) {
+            gs.dump(w);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         // Function C
         try (PrintWriter w = new PrintWriter(new File(outc))) {
             for (int i = 0; i < dataset.size() / 2; i++) {

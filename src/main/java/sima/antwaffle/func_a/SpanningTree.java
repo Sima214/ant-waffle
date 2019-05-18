@@ -35,9 +35,19 @@ public class SpanningTree {
     }
 
     /**
-     * Dump contents of this Spanning Tree to a write stream.
+     * Dump contents of this Spanning Tree to an output stream.
      */
     public void dump(PrintWriter w) throws IOException {
+        // Correct order of edges.
+        edges.sort((a, b) -> {
+            int c = a.v1.id - b.v1.id;
+            if (c != 0) {
+                return c;
+            } else {
+                return a.v2.id - b.v2.id;
+            }
+        });
+        // Dump.
         w.println(cost);
         for (Edge e : edges) {
             boolean v1s = e.v1.id <= e.v2.id;
@@ -47,13 +57,13 @@ public class SpanningTree {
         }
     }
 
-    static class Edge {
+    public static class Edge {
 
-        final Ant v1;
-        final Ant v2;
+        public final Ant v1;
+        public final Ant v2;
         private final double d;
 
-        Edge(Ant v1, Ant v2) {
+        public Edge(Ant v1, Ant v2) {
             this.v1 = v1;
             this.v2 = v2;
             // Precalc to avoid sqrt overhead.
@@ -62,7 +72,7 @@ public class SpanningTree {
             d = Math.sqrt(x * x + y * y);
         }
 
-        static Comparator<Edge> getEdgeComparator() {
+        public static Comparator<Edge> getEdgeComparator() {
             return (a, b) -> (int) Math.signum(a.d - b.d);
         }
 
@@ -73,7 +83,7 @@ public class SpanningTree {
          *
          * @return euclidean distance
          */
-        double distance() {
+        public double distance() {
             return d;
         }
     }
