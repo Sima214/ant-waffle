@@ -7,6 +7,12 @@ import java.util.Comparator;
 import java.util.List;
 import sima.antwaffle.types.Ant;
 
+/**
+ * A data structure which can store information about a tree, specialized for building a minimum
+ * spanning tree. Also an Edge subclass, which is used all over the place.
+ *
+ * @author Anastasios Simeonidis symeonidis@csd.auth 3088
+ */
 public class SpanningTree {
 
     private final List<Edge> edges;

@@ -3,6 +3,11 @@ package sima.antwaffle.types;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * A class which represents Red ants.
+ *
+ * @author Anastasios Simeonidis symeonidis@csd.auth 3088
+ */
 public class RedAnt extends Ant {
 
     private static final Pattern PATTERN = Pattern

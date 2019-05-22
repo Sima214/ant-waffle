@@ -10,6 +10,12 @@ import sima.antwaffle.types.Ant;
 import sima.antwaffle.types.BlackAnt;
 import sima.antwaffle.types.RedAnt;
 
+/**
+ * Specialized ant dataset transformation to a generic GS implementation.
+ * It is built around type 'safety', but it ended up more like spaghetti.
+ *
+ * @author Anastasios Simeonidis symeonidis@csd.auth 3088
+ */
 public class GaleShapley {
 
     private Proposer[] proposers;

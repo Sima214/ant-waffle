@@ -7,6 +7,8 @@ import sima.antwaffle.types.Ant;
 
 /**
  * Static method creating a SpanningTree using the Kruskal Union Find algorithm.
+ *
+ * @author Anastasios Simeonidis symeonidis@csd.auth 3088
  */
 public class KruskalUnionFind {
 

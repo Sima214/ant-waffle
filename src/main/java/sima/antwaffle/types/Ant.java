@@ -2,6 +2,8 @@ package sima.antwaffle.types;
 
 /**
  * Common attributes for ants.
+ *
+ * @author Anastasios Simeonidis symeonidis@csd.auth 3088
  */
 public abstract class Ant {
 

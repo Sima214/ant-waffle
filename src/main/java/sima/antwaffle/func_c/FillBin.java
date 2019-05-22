@@ -3,6 +3,13 @@ package sima.antwaffle.func_c;
 import sima.antwaffle.types.BlackAnt;
 import sima.antwaffle.types.RedAnt;
 
+/**
+ * Beware!
+ *
+ * Dynamic programming ahead!
+ *
+ * @author Anastasios Simeonidis symeonidis@csd.auth 3088
+ */
 public class FillBin {
 
     /**

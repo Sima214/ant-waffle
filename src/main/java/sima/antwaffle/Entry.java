@@ -17,6 +17,8 @@ import sima.antwaffle.types.RedAnt;
 
 /**
  * This is where the program enters execution.
+ *
+ * @author Anastasios Simeonidis symeonidis@csd.auth 3088
  */
 public class Entry {
 
